@@ -13,7 +13,7 @@ exports.result = function (opt) {
   console.log('\n');
   let treeNodes = createObj(opt.dir, opt, 0)
   opt.transformer && (treeNodes = opt.transformer(treeNodes))
-  let res = stru(treeNodes, [], opt).join('\n');
+  let res = stru(treeNodes, [], opt).map(line => `${line}  `).join('\n');
   console.log(res);
   opt.save && fs.writeFileSync(path.join(process.cwd(), 'directoryList.md'), res);
   return res;

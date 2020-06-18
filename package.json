@@ -3,7 +3,7 @@
   "name": "tree3",
   "version": "1.0.0",
   "description": "文件目录树",
-  "main": "index.js",
+  "main": "tree3.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

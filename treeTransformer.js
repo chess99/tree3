@@ -6,7 +6,7 @@
 function transformer(data) {
   const isMdFile = obj => obj.type === 'File' && /md$/i.test(obj.name) && !obj.name.includes('README')
   const hasMdInChildren = obj => obj.children.some(isMdFile)
-  const renameDir = obj => obj.name = `${obj.name}   ${obj.children.filter(isMdFile)[0].name.split('.')[0]  }`
+  const renameDir = obj => obj.name = `${obj.name}   ${obj.children.filter(isMdFile)[0].name.split('.')[0]}`
 
   const markKeep = obj => {
     return obj.type === 'Directory'
