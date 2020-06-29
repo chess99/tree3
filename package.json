@@ -9,12 +9,12 @@
   "bin": {
     "tree3": "./bin/tree3"
   },
-  "homepage": "https://github.com/chess99/tree.git#readme",
+  "homepage": "https://github.com/chess99/tree3.git#readme",
   "author": "chess99",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chess99/tree.git"
+    "url": "git+https://github.com/chess99/tree3.git"
   },
   "dependencies": {
     "chalk": "^1.1.3",
