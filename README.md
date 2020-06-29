@@ -4,6 +4,10 @@
 过滤下有 `xxx.md` 文件夹, 且把 xxx 附在文件夹名字后面  
 
 ```
+npx tree3 -ast <dir>
+```
+
+```
 ├── after-service   售后相关
 │   ├── bespeak   售后预约
 ├── executive   行政相关

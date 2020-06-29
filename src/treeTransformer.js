@@ -4,8 +4,8 @@
  * @returns {Array}
  */
 function transformer(data) {
-  const isMdFile = obj => obj.type === 'File' && /md$/i.test(obj.name) && !obj.name.includes('README')
-  const hasMdInChildren = obj => obj.children.some(isMdFile)
+  const isMdFile = obj => obj.type === 'File' && /md$/i.test(obj.name) && !/README\.md/i.test(obj.name)
+  const hasMdInChildren = obj => obj.children && obj.children.some(isMdFile)
   const renameDir = obj => obj.name = `${obj.name}   ${obj.children.filter(isMdFile)[0].name.split('.')[0]}`
 
   const markKeep = obj => {
@@ -18,8 +18,8 @@ function transformer(data) {
   const walkMarkKeep = obj => {
     if (obj.type === 'Directory') {
       markKeep(obj)
-      obj.children.forEach(walkMarkKeep)
-      obj.$_keep = obj.$_keep || obj.children.some(childObj => childObj.$_keep)
+      obj.children && obj.children.forEach(walkMarkKeep)
+      obj.$_keep = obj.$_keep || (obj.children && obj.children.some(childObj => childObj.$_keep))
     }
   }
   data.forEach(walkMarkKeep)
@@ -27,7 +27,7 @@ function transformer(data) {
   const walkFilter = arr => {
     let newArr = arr.filter(obj => obj.$_keep && obj.type === 'Directory')
     newArr.forEach(obj => {
-      obj.children = walkFilter(obj.children)
+      if (obj.children) obj.children = walkFilter(obj.children)
     })
     return newArr
   }

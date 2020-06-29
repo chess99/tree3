@@ -3,9 +3,10 @@
 'use strict';
 
 var commander = require('commander');
-var API = require('./API');
-var pkg = require('./package.json');
-var transformer = require('./treeTransformer');
+var API = require('../src/API');
+var pkg = require('../package.json');
+var transformer = require('../src/treeTransformer');
+var keepTree = tree => tree
 
 var ENABLE = true;
 
@@ -15,7 +16,8 @@ commander.version(pkg.version)
     })
     .option('-a, --auto', 'auto create Node.js project tree, ignore node_modules/* add color schemes')
     .option('-c, --color', 'add color schemes')
-    .option('-s, --save', 'create a .md file ./tree3.md')
+    .option('-s, --save', 'create a .md file ./directoryList.md')
+    .option('-t, --transform', 'Transform the way the tree is displayed')
     .usage('[options] <dir>');
 
 commander.on('--help', function () {
@@ -47,14 +49,14 @@ commander.parse(process.argv);
 
 let opt = {};
 console.log('commander', commander);
-opt.transformer = transformer
+opt.transformer = commander.transform ? transformer : keepTree
 opt.dir = commander.args[0] || process.cwd();
 opt.ignore = commander.ignore || [];
 opt.color = commander.color;
 opt.save = commander.save;
 if (commander.auto) {
     opt.ignore.push('node_modules');
-    opt.color = true
+    // opt.color = true
 }
 
 if (ENABLE) {
