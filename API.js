@@ -145,16 +145,16 @@ function colorName(obj, opt) {
 
 
 /**
- * tree2 版本升级
+ * tree3 版本升级
  */
 exports.update = function () {
-  console.log(chalk.green('[tree2] ') + 'Be sure to have the latest version by doing `npm install tree2@latest -g` before doing this procedure.');
-  console.log(chalk.green('[tree2] ') + 'Start update...');
-  execa.stdout('npm', ['install', 'tree2', '-g'])
+  console.log(chalk.green('[tree3] ') + 'Be sure to have the latest version by doing `npm install tree3@latest -g` before doing this procedure.');
+  console.log(chalk.green('[tree3] ') + 'Start update...');
+  execa.stdout('npm', ['install', 'tree3', '-g'])
     .then(result => {
-      console.log(chalk.green('[tree2] ') + 'Upgrade success!\n' + result)
+      console.log(chalk.green('[tree3] ') + 'Upgrade success!\n' + result)
     })
     .catch(e => {
-      console.log(chalk.green('[tree2] ') + 'Upgrade failed\n' + e);
+      console.log(chalk.green('[tree3] ') + 'Upgrade failed\n' + e);
     })
 };

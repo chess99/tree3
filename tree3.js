@@ -15,29 +15,29 @@ commander.version(pkg.version)
     })
     .option('-a, --auto', 'auto create Node.js project tree, ignore node_modules/* add color schemes')
     .option('-c, --color', 'add color schemes')
-    .option('-s, --save', 'create a .md file ./tree2.md')
+    .option('-s, --save', 'create a .md file ./tree3.md')
     .usage('[options] <dir>');
 
 commander.on('--help', function () {
     console.log('  Basic Examples:');
     console.log('');
     console.log(' Start :');
-    console.log(' $tree2 ');
+    console.log(' $tree3 ');
 
-    console.log(' Auto Node.js tree2 :');
-    console.log(' $tree2 -a');
+    console.log(' Auto Node.js tree3 :');
+    console.log(' $tree3 -a');
     console.log('');
     console.log(' Show others dir :');
-    console.log(' $tree2 /usr/local');
+    console.log(' $tree3 /usr/local');
     console.log('');
     console.log(' Ignore [nodele_module,bin ...] floder');
-    console.log(' $tree2 -i node-module, bin');
+    console.log(' $tree3 -i node-module, bin');
     console.log('');
 
 });
 
 commander.command('update')
-    .description('update tree2')
+    .description('update tree3')
     .action(function () {
         ENABLE = false;
         API.update();
